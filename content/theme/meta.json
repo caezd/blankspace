@@ -1,0 +1,13 @@
+{
+    "title": "Thème",
+    "pages": [
+        "index",
+        "installation",
+        "vitrine",
+        "nouveautes",
+        "faq",
+        "---Pas à pas---",
+        "configuration",
+        "templates"
+    ]
+}

@@ -1,10 +1,10 @@
-import { source } from "@/lib/source";
+import { forumactif as source } from "@/lib/source";
 import {
     DocsBody,
     DocsDescription,
     DocsPage,
     DocsTitle,
-} from "fumadocs-ui/page";
+} from "@/components/layout/page";
 import { notFound } from "next/navigation";
 import { getMDXComponents } from "@/mdx-components";
 

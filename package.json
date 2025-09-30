@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@content-collections/mdx": "^0.2.2",
     "@radix-ui/react-collapsible": "^1.1.12",
     "@radix-ui/react-navigation-menu": "^1.2.14",
     "@radix-ui/react-popover": "^1.1.15",
