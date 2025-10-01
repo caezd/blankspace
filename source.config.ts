@@ -1,28 +1,50 @@
-import { defineDocs, defineConfig } from "fumadocs-mdx/config";
+import {
+    defineDocs,
+    defineConfig,
+    metaSchema,
+    frontmatterSchema,
+} from "fumadocs-mdx/config";
+import { z } from "zod";
+
+const docs = {
+    schema: frontmatterSchema.extend({
+        author: z.string(),
+        contributors: z.array(z.string()).optional(),
+    }),
+};
+
+const meta = {
+    schema: metaSchema.extend({}),
+};
 
 export const theme = defineDocs({
     dir: "content/theme",
-    lastModifiedTime: "git",
+    docs,
+    meta,
 });
 
 export const forumactif = defineDocs({
     dir: "content/forumactif",
-    lastModifiedTime: "git",
+    docs,
+    meta,
 });
 
 export const plugins = defineDocs({
     dir: "content/plugins",
-    lastModifiedTime: "git",
+    docs,
+    meta,
 });
 
 export const tutoriaux = defineDocs({
     dir: "content/tutoriaux",
-    lastModifiedTime: "git",
+    docs,
+    meta,
 });
 
 export const ressources = defineDocs({
     dir: "content/ressources",
-    lastModifiedTime: "git",
+    docs,
+    meta,
 });
 
-export default defineConfig();
+export default defineConfig({ lastModifiedTime: "git" });

@@ -43,7 +43,7 @@ export function LayoutBody(props: ComponentProps<"main">) {
             id="nd-docs-layout"
             {...props}
             className={cn(
-                "grid md:grid-cols-[250px_1fr] pt-(--fd-nav-height) container mx-auto relative",
+                "grid md:grid-cols-[250px_1fr] pt-(--fd-nav-height) min-h-screen container mx-auto relative",
                 /* !collapsed && "mx-(--fd-layout-offset)", */
                 props.className
             )}

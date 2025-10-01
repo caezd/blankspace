@@ -78,7 +78,7 @@ export function PageRoot({ toc = false, children, ...props }: RootProps) {
             id="nd-page"
             {...props}
             className={cn(
-                "flex flex-1 w-full mx-auto max-w-(--fd-page-width) pt-(--fd-tocnav-height) pe-(--fd-toc-width)",
+                "grid md:grid-cols-[1fr_250px] w-full mx-auto max-w-(--fd-page-width) pt-(--fd-tocnav-height) pe-(--fd-toc-width)",
                 props.className
             )}
         >

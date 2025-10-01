@@ -1,4 +1,4 @@
-import { theme as source } from "@/lib/source";
+import { plugins as source } from "@/lib/source";
 import {
     DocsBody,
     DocsDescription,
@@ -6,8 +6,6 @@ import {
     DocsTitle,
 } from "@/components/layout/page";
 import { notFound } from "next/navigation";
-import { Feedback } from "@/components/feedback";
-import { onRateAction, owner, repo } from "@/lib/github";
 import { getMDXComponents } from "@/mdx-components";
 
 export default async function Page(props) {
@@ -21,17 +19,13 @@ export default async function Page(props) {
         <DocsPage
             toc={page.data.toc}
             full={page.data.full}
-            author={page.data.author}
             lastUpdate={new Date(page.data.lastModified)}
         >
-            <div className="border-b mb-8">
-                <DocsTitle>{page.data.title}</DocsTitle>
-                <DocsDescription>{page.data.description}</DocsDescription>
-            </div>
+            <DocsTitle>{page.data.title}</DocsTitle>
+            <DocsDescription>{page.data.description}</DocsDescription>
             <DocsBody>
                 <MDX components={getMDXComponents()} />
             </DocsBody>
-            <Feedback onRateAction={onRateAction} />
         </DocsPage>
     );
 }

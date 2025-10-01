@@ -12,14 +12,13 @@ export default async function Page(props) {
     const params = await props.params;
     const page = source.getPage(params.slug);
     if (!page) notFound();
-
     const MDX = page.data.body;
 
     return (
         <DocsPage
             toc={page.data.toc}
             full={page.data.full}
-            lastUpdate={new Date(page.data.lastModified)}
+            author={page.data.author}
         >
             <DocsTitle>{page.data.title}</DocsTitle>
             <DocsDescription>{page.data.description}</DocsDescription>

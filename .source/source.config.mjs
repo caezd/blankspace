@@ -1,26 +1,46 @@
 // source.config.ts
-import { defineDocs, defineConfig } from "fumadocs-mdx/config";
+import {
+  defineDocs,
+  defineConfig,
+  metaSchema,
+  frontmatterSchema
+} from "fumadocs-mdx/config";
+import { z } from "zod";
+var docs = {
+  schema: frontmatterSchema.extend({
+    author: z.string(),
+    contributors: z.array(z.string()).optional()
+  })
+};
+var meta = {
+  schema: metaSchema.extend({})
+};
 var theme = defineDocs({
   dir: "content/theme",
-  lastModifiedTime: "git"
+  docs,
+  meta
 });
 var forumactif = defineDocs({
   dir: "content/forumactif",
-  lastModifiedTime: "git"
+  docs,
+  meta
 });
 var plugins = defineDocs({
   dir: "content/plugins",
-  lastModifiedTime: "git"
+  docs,
+  meta
 });
 var tutoriaux = defineDocs({
   dir: "content/tutoriaux",
-  lastModifiedTime: "git"
+  docs,
+  meta
 });
 var ressources = defineDocs({
   dir: "content/ressources",
-  lastModifiedTime: "git"
+  docs,
+  meta
 });
-var source_config_default = defineConfig();
+var source_config_default = defineConfig({ lastModifiedTime: "git" });
 export {
   source_config_default as default,
   forumactif,

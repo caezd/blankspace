@@ -68,12 +68,15 @@ interface InternalContext {
 }
 
 const itemVariants = cva(
-    "relative flex flex-row items-center gap-2 rounded-lg p-2 ps-(--sidebar-item-offset) text-start text-fd-muted-foreground [overflow-wrap:anywhere] [&_svg]:size-4 [&_svg]:shrink-0",
+    "relative flex flex-row items-center gap-2 rounded-lg p-2 ps-(--sidebar-item-offset) text-start text-muted-foreground [overflow-wrap:anywhere] [&_svg]:size-4 [&_svg]:shrink-0",
     {
         variants: {
             active: {
-                true: "bg-fd-primary/10 text-fd-primary",
-                false: "transition-colors hover:bg-fd-accent/50 hover:text-fd-accent-foreground/80 hover:transition-none",
+                true: "bg-card text-foreground",
+                false: "transition-colors hover:bg-(--pill) hover:text-foreground hover:transition-none",
+            },
+            insideFolder: {
+                true: "text-fd-primary",
             },
         },
     }
@@ -260,7 +263,7 @@ export function SidebarSeparator(props: ComponentProps<"p">) {
         <p
             {...props}
             className={cn(
-                "flex items-center gap-2 ps-(--sidebar-item-offset) [&_svg]:size-4 [&_svg]:shrink-0 border-t",
+                "flex items-center gap-2 [&_svg]:size-4 [&_svg]:shrink-0 border-t uppercase text-sm font-heading text-muted font-bold",
                 props.className
             )}
         >
@@ -387,7 +390,7 @@ export function SidebarFolderContent(props: CollapsibleContentProps) {
                 "relative",
                 level === 1 && [
                     "before:content-[''] before:absolute before:w-px before:inset-y-1 before:bg-fd-border before:start-2.5",
-                    "**:data-[active=true]:before:content-[''] **:data-[active=true]:before:bg-fd-primary **:data-[active=true]:before:absolute **:data-[active=true]:before:w-px **:data-[active=true]:before:inset-y-2.5 **:data-[active=true]:before:start-2.5",
+                    "**:data-[active=true]:before:content-[''] **:data-[active=true]:before:bg-fd-primary **:data-[active=true]:before:absolute **:data-[active=true]:before:w-px **:data-[active=true]:before:inset-y-2.5 **:data-[active=true]:before:start-2.5 **:bg-transparent",
                 ],
                 props.className
             )}
@@ -491,7 +494,7 @@ export function SidebarPageTree(props: {
                     return (
                         <SidebarSeparator
                             key={i}
-                            className={cn(i !== 0 && "mt-6 pt-6")}
+                            className={cn(i !== 0 && "mt-6 pt-10")}
                         >
                             {item.icon}
                             {item.name}
