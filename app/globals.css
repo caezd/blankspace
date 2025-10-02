@@ -55,6 +55,11 @@
 }
 
 @theme inline {
+    --color-success-400: light-dark(green, #379d69);
+    --color-danger-400: light-dark(red, #d2354d);
+    --color-warning-400: light-dark(orange, #cf821d);
+    --color-info-400: light-dark(blue, #69a0ff);
+
     --font-heading: "Inclusive Sans", sans-serif;
     --color-background: var(--background);
     --color-foreground: var(--foreground);
@@ -95,13 +100,13 @@
     --radius-xl: calc(var(--radius) + 4px);
 }
 
-*,
+/* ,
 ::after,
 ::before,
 ::backdrop,
 ::file-selector-button {
     border-color: light-dark(#000, #3e3e60);
-}
+} */
 
 .dark {
     --card-foreground: oklch(0.985 0 0);
@@ -167,6 +172,7 @@ h6 {
 
 .copy {
     display: grid;
+    align-content: start;
     gap: 1rem;
     color: var(--foreground);
     :where(p):not(:where([class~="not-copy"], [class~="not-copy"] *)) {

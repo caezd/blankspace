@@ -6,8 +6,8 @@ const authorsList = [
     },
     {
         name: "Poumon",
-        url: "https://example.com/bob",
-        avatar: "https://example.com/bob.jpg",
+        url: "https://github.com/caezd",
+        avatar: "https://avatars.githubusercontent.com/u/9888270?v=4",
     },
     {
         name: "'Christa'",
