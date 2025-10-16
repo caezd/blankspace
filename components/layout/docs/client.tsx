@@ -9,6 +9,7 @@ import Link from "fumadocs-core/link";
 import { usePathname } from "fumadocs-core/framework";
 import { isTabActive } from "../../../lib/is-active";
 import type { Option } from "../../root-toggle";
+import { is } from "zod/v4/locales";
 
 export function Navbar({
     mode,
@@ -22,11 +23,8 @@ export function Navbar({
             id="nd-subnav"
             {...props}
             className={cn(
-                "fixed flex flex-col top-(--fd-banner-height) left-0 right-(--removed-body-scroll-bar-size,0) z-10 px-(--fd-layout-offset) h-(--fd-nav-height) backdrop-blur-sm transition-colors",
-                (!isTransparent || open) && "bg-fd-background/80",
-                mode === "auto" &&
-                    !collapsed &&
-                    "ps-[calc(var(--fd-layout-offset)+var(--fd-sidebar-width))]",
+                "lg:col-start-1 lg:row-start-1 lg:col-span-2 sticky top-0 px-12 py-6 flex items-center justify-between border-b",
+                !isTransparent && "bg-body",
                 props.className
             )}
         >
@@ -43,17 +41,15 @@ export function LayoutBody(props: ComponentProps<"main">) {
             id="nd-docs-layout"
             {...props}
             className={cn(
-                "grid md:grid-cols-[250px_1fr] pt-(--fd-nav-height) min-h-screen container mx-auto relative",
+                "my-12 grid md:grid-cols-[250px_1fr] min-h-screen container p-0 mx-auto relative",
                 /* !collapsed && "mx-(--fd-layout-offset)", */
                 props.className
             )}
             style={{
                 ...props.style,
-                /* paddingInlineStart: collapsed
-                    ? "min(calc(100vw - var(--fd-page-width)), var(--fd-sidebar-width))"
-                    : "var(--fd-sidebar-width)", */
             }}
         >
+            <div className="bg-body absolute inset-0 rounded-3xl mask-b-from-10% -z-10"></div>
             {props.children}
         </main>
     );
@@ -94,22 +90,14 @@ export function LayoutTabs({
     }, [options, pathname]);
 
     return (
-        <div
-            {...props}
-            className={cn(
-                "flex flex-row items-end gap-6 overflow-auto",
-                props.className
-            )}
-        >
-            <div className="container mx-auto">
-                {options.map((option) => (
-                    <LayoutTab
-                        key={option.url}
-                        selected={selected === option}
-                        option={option}
-                    />
-                ))}
-            </div>
+        <div {...props} className={cn("flex gap-8", props.className)}>
+            {options.map((option) => (
+                <LayoutTab
+                    key={option.url}
+                    selected={selected === option}
+                    option={option}
+                />
+            ))}
         </div>
     );
 }
@@ -126,9 +114,9 @@ function LayoutTab({
             href={url}
             {...props}
             className={cn(
-                "inline-flex border-b-2 border-transparent transition-colors items-center pb-1.5 font-medium gap-2 text-fd-muted-foreground text-sm text-nowrap hover:text-fd-accent-foreground",
+                "uppercase px-2 py-1 rounded-sm font-bold hover:bg-nav-foreground",
                 unlisted && !selected && "hidden",
-                selected && "border-fd-primary text-fd-primary",
+                selected && "bg-accent text-fd-primary",
                 props?.className
             )}
         >
